@@ -11,10 +11,8 @@
   <body>
     <div id="app">
         <nav>
-            <ul>
-                <li><button @click="nowOn = 'stopwatch'">Stopwatch</button></li>
-                <li><button @click="nowOn = 'timer'">Timer</button></li>
-            </ul>
+            <button @click="nowOn = 'stopwatch'">Stopwatch</button>
+            <button @click="nowOn = 'timer'">Timer</button>
         </nav>
         <main>
             <section v-if="nowOn === 'stopwatch'">
