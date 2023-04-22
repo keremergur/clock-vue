@@ -3,7 +3,10 @@
 Vue.createApp({
     data() {
         return {
-            nowOn: 'stopwatch'
+            nowOn: 'stopwatch',
+            countUp: 0,
+            countDown: 1,
+            markers: [],
         };
     },
     methods: {
