@@ -10,7 +10,20 @@
   </head>
   <body>
     <div id="app">
-        
+        <nav>
+            <ul>
+                <li><button @click="nowOn = 'stopwatch'">Stopwatch</button></li>
+                <li><button @click="nowOn = 'timer'">Timer</button></li>
+            </ul>
+        </nav>
+        <main>
+            <section v-if="nowOn === 'stopwatch'">
+                <p>Hi</p>
+            </section>
+            <section v-else>
+                <p>Bye</p>
+            </section>
+        </main>
     </div>
   </body>
 </html>
