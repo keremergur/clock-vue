@@ -6,6 +6,7 @@ Vue.createApp({
             nowOn: 'stopwatch',
             sInit: true,
             countingUp: false,
+            sInterval: null,
             sHours: 0,
             sMinutes: 0,
             sSeconds: 0,
@@ -59,13 +60,19 @@ Vue.createApp({
     methods: {
         count() {
             this.sInit = false;
-            if(countingUp) {
-                // clearInterval();
+            if(!this.countingUp) {
+                this.sInterval = setInterval(() => {
+                    this.sDecasecs++;
+                }, 100);
+                this.countingUp = true;
+            }
+        },
+        stop() {
+            if(this.countingUp) {
+                clearInterval(this.sInterval);
+                this.countingUp = false;
             } else {
-                // setInterval(() => {
-                //     this.count += 1;
-                // }, 100);
-                //this.countingUp = true;
+                this.reset();
             }
         },
         reset() {
