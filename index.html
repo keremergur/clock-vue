@@ -16,7 +16,31 @@
         </nav>
         <main>
             <section v-if="nowOn === 'stopwatch'">
-                <p>Hi</p>
+                <div>
+                    <span>{{ sdHours }}</span>
+                    <span>{{ sdMinutes }}</span>
+                    <span>{{ sdSeconds }}.</span>
+                    <span>{{ sDecasecs }}</span>
+                </div>
+                <div>
+                    <button @click="count">
+                        {{ countingUp ? 'Pause' : 'Start' }}
+                    </button>
+                    <button @click="reset">Stop</button>
+                </div>
+                <div>
+                    <button @click="mark">Set Marker</button>
+                    <button @click="test">Test</button>
+                    <ul>
+                        <li v-for="marker in markers"
+                            :key="marker">
+                            <span>{{ marker.hours }}</span>
+                            <span>{{ marker.mins }}</span>
+                            <span>{{ marker.secs }}.</span>
+                            <span>{{ marker.dsecs }}</span>
+                        </li>
+                    </ul>
+                </div>
             </section>
             <section v-else>
                 <p>Bye</p>
