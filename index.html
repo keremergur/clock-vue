@@ -24,7 +24,7 @@
                 </div>
                 <div>
                     <button @click="count">
-                        {{ true ? 'Start' : 'Unpause' }}
+                        {{ sInit ? 'Start' : 'Unpause' }}
                     </button>
                     <button @click="stop">
                         {{ countingUp ? 'Stop' : 'Reset' }}
