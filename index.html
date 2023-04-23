@@ -24,9 +24,11 @@
                 </div>
                 <div>
                     <button @click="count">
-                        {{ countingUp ? 'Pause' : 'Start' }}
+                        {{ true ? 'Start' : 'Unpause' }}
                     </button>
-                    <button @click="reset">Stop</button>
+                    <button @click="stop">
+                        {{ countingUp ? 'Stop' : 'Reset' }}
+                    </button>
                 </div>
                 <div>
                     <button @click="mark">Set Marker</button>
