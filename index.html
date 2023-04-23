@@ -46,7 +46,7 @@
         <section v-else>
             <div>
                 <span v-if="countingDown">
-                {{ tHours }} : {{ tMinutes }} : {{ tSeconds }}
+                {{ tdHours }}{{ tdMinutes }}{{ tdSeconds }}
                 </span>
                 <span v-else>
                 <input type="number" v-model="tHours"/> :
@@ -55,11 +55,9 @@
                 </span>
             </div>
             <div>
-                <button @click="countDown">
-                    {{ sInit ? 'Start' : 'Unpause' }}
-                </button>
+                <button @click="countDown">Start</button>
                 <button @click="tStop">
-                    {{ countingUp ? 'Stop' : 'Reset' }}
+                    {{ countingDown ? 'Stop' : 'Reset' }}
                 </button>
             </div>
         </section>

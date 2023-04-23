@@ -37,6 +37,25 @@ Vue.createApp({
                 this.sDecasecs = 0;
                 this.sSeconds++;
             }
+        },
+        tHours(value) {
+            if(value === -1) {
+                this.tStop();
+                this.tReset();
+                alert('Timer finished!');
+            }
+        },
+        tMinutes(value) {
+            if(value === -1) {
+                this.tHours--;
+                this.tMinutes = 59;
+            }
+        },
+        tSeconds(value) {
+            if(value === -1) {
+                this.tMinutes--;
+                this.tSeconds = 59;
+            }
         }
     },
     computed: {
@@ -59,6 +78,26 @@ Vue.createApp({
             } else {
                 return this.sSeconds;
             }
+        },
+        tdHours() {
+            if(this.tHours) {
+                return this.tHours + ':';
+            } else {
+                return '';
+            }
+        },
+        tdMinutes() {
+            if(this.tMinutes < 10) {
+                return '0' + this.tMinutes + ':';
+            }
+            return this.tMinutes + ':';
+        },
+        tdSeconds() {
+            if(this.tSeconds < 10) {
+                return '0' + this.tSeconds;
+            } else {
+                return this.tSeconds;
+            }
         }
     },
     methods: {
@@ -76,10 +115,10 @@ Vue.createApp({
                 clearInterval(this.sInterval);
                 this.countingUp = false;
             } else {
-                this.reset();
+                this.sReset();
             }
         },
-        reset() {
+        sReset() {
             this.sInit = true;
             this.sHours = 0;
             this.sMinutes = 0;
@@ -95,10 +134,25 @@ Vue.createApp({
             });
         },
         countDown() {
-
+            if(!this.countingDown) {
+                this.tInterval = setInterval(() => {
+                    this.tSeconds--;
+                }, 1000);
+                this.countingDown = true;
+            }
         },
         tStop() {
-
+            if(this.countingDown) {
+                clearInterval(this.tInterval);
+                this.countingDown = false;
+            } else {
+                this.tReset();
+            }
+        },
+        tReset() {
+            this.tHours = 0;
+            this.tMinutes = 0;
+            this.tSeconds = 0;
         },
     }
 }).mount('#app');
