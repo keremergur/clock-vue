@@ -1,53 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clock</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
-    <script src="app.js" defer></script>
-  </head>
-  <body>
-    <div id="app">
-        <nav>
-            <button @click="nowOn = 'stopwatch'">Stopwatch</button>
-            <button @click="nowOn = 'timer'">Timer</button>
-        </nav>
-        <main>
-            <section v-if="nowOn === 'stopwatch'">
-                <div>
-                    <span>{{ sdHours }}</span>
-                    <span>{{ sdMinutes }}</span>
-                    <span>{{ sdSeconds }}.</span>
-                    <span>{{ sDecasecs }}</span>
-                </div>
-                <div>
-                    <button @click="count">
-                        {{ sInit ? 'Start' : 'Unpause' }}
-                    </button>
-                    <button @click="stop">
-                        {{ countingUp ? 'Stop' : 'Reset' }}
-                    </button>
-                </div>
-                <div>
-                    <button @click="mark">Set Marker</button>
-                    <button @click="test">Test</button>
-                    <ul>
-                        <li v-for="marker in markers"
-                            :key="marker">
-                            <span>{{ marker.hours }}</span>
-                            <span>{{ marker.mins }}</span>
-                            <span>{{ marker.secs }}.</span>
-                            <span>{{ marker.dsecs }}</span>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <section v-else>
-                <p>Bye</p>
-            </section>
-        </main>
-    </div>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clock</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://unpkg.com/vue@next" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div id="app">
+    <nav>
+        <button @click="nowOn = 'stopwatch'">Stopwatch</button>
+        <button @click="nowOn = 'timer'">Timer</button>
+    </nav>
+    <main>
+        <section v-if="nowOn === 'stopwatch'">
+            <div>
+                <span>{{ sdHours }}</span>
+                <span>{{ sdMinutes }}</span>
+                <span>{{ sdSeconds }}.</span>
+                <span>{{ sDecasecs }}</span>
+            </div>
+            <div>
+                <button @click="countUp">
+                    {{ sInit ? 'Start' : 'Unpause' }}
+                </button>
+                <button @click="sStop">
+                    {{ countingUp ? 'Stop' : 'Reset' }}
+                </button>
+            </div>
+            <div>
+                <button @click="mark">Set Marker</button>
+                <ul>
+                    <li v-for="marker in markers"
+                        :key="marker">
+                        <span>{{ marker.hours }}</span>
+                        <span>{{ marker.mins }}</span>
+                        <span>{{ marker.secs }}.</span>
+                        <span>{{ marker.dsecs }}</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section v-else>
+            <div>
+                <span v-if="countingDown">
+                {{ tHours }} : {{ tMinutes }} : {{ tSeconds }}
+                </span>
+                <span v-else>
+                <input type="number" v-model="tHours"/> :
+                <input type="number" v-model="tMinutes"/> :
+                <input type="number" v-model="tSeconds"/>
+                </span>
+            </div>
+            <div>
+                <button @click="countDown">
+                    {{ sInit ? 'Start' : 'Unpause' }}
+                </button>
+                <button @click="tStop">
+                    {{ countingUp ? 'Stop' : 'Reset' }}
+                </button>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
 </html>

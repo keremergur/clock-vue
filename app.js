@@ -12,7 +12,11 @@ Vue.createApp({
             sSeconds: 0,
             sDecasecs: 0,
             markers: [],
-            countDown: 1,
+            countingDown: false,
+            tInterval: null,
+            tHours: 0,
+            tMinutes: 0,
+            tSeconds: 0,
         };
     },
     watch: {
@@ -58,7 +62,7 @@ Vue.createApp({
         }
     },
     methods: {
-        count() {
+        countUp() {
             this.sInit = false;
             if(!this.countingUp) {
                 this.sInterval = setInterval(() => {
@@ -67,7 +71,7 @@ Vue.createApp({
                 this.countingUp = true;
             }
         },
-        stop() {
+        sStop() {
             if(this.countingUp) {
                 clearInterval(this.sInterval);
                 this.countingUp = false;
@@ -90,8 +94,11 @@ Vue.createApp({
                 dsecs: this.sDecasecs,
             });
         },
-        test() {
-            this.sSeconds++;
-        }
+        countDown() {
+
+        },
+        tStop() {
+
+        },
     }
 }).mount('#app');
