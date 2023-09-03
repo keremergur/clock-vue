@@ -124,6 +124,7 @@ Vue.createApp({
             this.sMinutes = 0;
             this.sSeconds = 0;
             this.sDecasecs = 0;
+            this.markers = [];
         },
         mark() {
             this.markers.unshift({

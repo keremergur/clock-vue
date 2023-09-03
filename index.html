@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="app">
-    <nav>
+    <nav class="half">
         <button @click="nowOn = 'stopwatch'">Stopwatch</button>
         <button @click="nowOn = 'timer'">Timer</button>
     </nav>
@@ -22,7 +22,7 @@
                 <span>{{ sdSeconds }}.</span>
                 <span>{{ sDecasecs }}</span>
             </div>
-            <div>
+            <div class="half">
                 <button @click="countUp">
                     {{ sInit ? 'Start' : 'Unpause' }}
                 </button>
@@ -30,7 +30,7 @@
                     {{ countingUp ? 'Stop' : 'Reset' }}
                 </button>
             </div>
-            <div>
+            <div class="fullw">
                 <button @click="mark">Set Marker</button>
                 <ul>
                     <li v-for="marker in markers"
@@ -54,7 +54,7 @@
                 <input type="number" v-model="tSeconds"/>
                 </span>
             </div>
-            <div>
+            <div class="half">
                 <button @click="countDown">Start</button>
                 <button @click="tStop">
                     {{ countingDown ? 'Stop' : 'Reset' }}

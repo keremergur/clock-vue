@@ -1,0 +1,17 @@
+* {
+    font-size: large;
+}
+
+#app {
+    margin: 15rem auto;
+    border: 2px solid green;
+    width: 15rem;
+}
+
+.half button {
+    width: 50%;
+}
+
+.fullw button {
+    width: 100%;
+}
